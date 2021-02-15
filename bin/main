@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-require './lib/logic'
-require './lib/settings'
+require_relative '../lib/logic'
+require_relative '../lib/settings'
 
 def make_new_player
   puts 'What symbol do you want to use?'
