@@ -3,7 +3,8 @@
 # Week 2 TicTacToe
 
 In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.
-Players will soon discover that the best play from both parties leads to a draw. Hence, tic-tac-toe is most often played by young children, who often have not yet discovered the optimal strategy. 
+Players will soon discover that the best play from both parties leads to a draw.
+Hence, tic-tac-toe is most often played by young children, who often have not yet discovered the optimal strategy. 
 
 ## How do we play Tic Tac Toe?
 
