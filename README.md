@@ -31,7 +31,7 @@ This is an example of how you may give instructions on setting up your project l
 - Clone this repository with git clone ```https://github.com/Greg0109/TicTacToe.git``` using your terminal or command line.
 - Change to the project directory by entering :
 ```cd TicTacToe``` in the terminal .
-- run the command ```bin/main.rb```
+- run the command ```bin/main```
 
 ## Prequisites
 
