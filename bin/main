@@ -39,7 +39,31 @@ puts
 board = make_board
 player_one_turn = true
 
-while true
+def player_won(player_one_turn)
+  puts "Game ended!"
+  if player_one_turn
+    puts "Player one won!"
+  else
+    puts "Player two won!"
+  end
+end
+
+def draw
+  puts "Game ended!"
+  puts "It's a draw"
+end
+
+def invalid_input
+  puts "Invalid input, please try again...."
+end
+
+def numeric?(number)
+  Integer(number) != nil rescue false
+end
+
+game_on = true
+turns = 0
+while game_on
   if player_one_turn
     puts 'Player one, please make a move'
   else
@@ -51,6 +75,18 @@ while true
     puts '----------' if x != board[2]
   end
   print 'Enter move: '
-  gets.chomp
+  movement = gets.chomp
+  if not numeric?(movement)
+    invalid_input
+    player_one_turn = !player_one_turn
+    next
+  end
+  turns += 1
+  if turns == 10
+    player_won(player_one_turn)
+  elsif turns == 11
+    draw
+    game_on = false
+  end
   puts
 end
