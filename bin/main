@@ -45,7 +45,6 @@ def invalid_entry(board, movement, game)
 end
 
 while true
-
   if player_one_turn
     puts 'Player one, please make a move'
   else
