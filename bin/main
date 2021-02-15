@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+require_relative '../lib/logic'
+require_relative '../lib/settings'
+
+def make_new_player
+  puts 'What symbol do you want to use?'
+  player_sign = gets.chomp
+  compatible_signs = %w[X O]
+  if !compatible_signs.include?(player_sign.upcase)
+    puts 'Incompatible sign, please try again'
+    puts
+    make_new_player
+  else
+    player_sign.upcase
+  end
+end
+
+puts 'Ready player one'
+
+settings = Settings.new
+player_one = make_new_player
+player_two = settings.get_players(player_one)
+
+puts
+puts "Player one has the sign #{player_one}"
+puts "Player two has the sign #{player_two}"
+puts
+
+game = Logic.new(player_one, player_two)
+board = settings.make_board
+player_one_turn = true
+player_move = nil
+game_status = false
+
+def invalid_entry(board, movement, game)
+  if !game.numeric?(movement)
+    true
+  else
+    movement = Integer(movement)
+    if (movement > 9 or movement < 1) || game.check_if_filled(board, movement)
+      true
+    else
+      false
+    end
+  end
+end
+
+def display_board(board)
+  board.each do |x|
+    puts "#{x[0]} | #{x[1]} | #{x[2]}"
+    puts '----------' if x != board[2]
+  end
+end
+
+while true
+  if player_one_turn
+    puts 'Player one, please make a move'
+  else
+    puts 'Player two, please make a move'
+  end
+  player_one_turn = !player_one_turn
+
+  display_board(board)
+
+  print 'Enter move: '
+  movement = gets.chomp
+  puts
+
+  if invalid_entry(board, movement, game)
+    puts 'Invalid entry, please try again'
+    player_one_turn = !player_one_turn
+    puts
+    next
+  else
+    movement = Integer(movement)
+  end
+  game_status, board = game.player_won(board, movement, !player_one_turn)
+  next unless game_status
+
+  display_board(board)
+  puts
+  puts 'Game ended!'
+  if game.check_win(board)
+    if !player_one_turn
+      puts 'Player one won!'
+    else
+      puts 'Player two won!'
+    end
+  elsif game.check_draw(board)
+    puts "It's a draw"
+  end
+  break
+end
