@@ -81,9 +81,9 @@ while game_on
     player_one_turn = !player_one_turn
     next
   end
-  if (Integer(movement) > 9 or Integer(movement) < 1)
+  if Integer(movement) > 9 or Integer(movement) < 1
     invalid_input
-    player_one_turn != player_one_turn
+    player_one_turn = !player_one_turn
     next
   end
   turns += 1
