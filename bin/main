@@ -1,2 +1,97 @@
 #!/usr/bin/env ruby
-puts 'Hello World!'
+
+def make_new_player
+  puts 'What symbol do you want to use?'
+  player_sign = gets.chomp
+  compatible_signs = %w[X O]
+  if !compatible_signs.include?(player_sign.upcase)
+    puts 'Incompatible sign, please try again'
+    puts
+    make_new_player
+  else
+    player_sign.upcase
+  end
+end
+
+def get_players
+  player_one = make_new_player
+  player_two = if player_one == 'X'
+                 'O'
+               else
+                 'X'
+               end
+  [player_one, player_two]
+end
+
+def make_board
+  first_line = [1, 2, 3]
+  second_line = [4, 5, 6]
+  third_line = [7, 8, 9]
+  [first_line, second_line, third_line]
+end
+
+puts 'Ready player one'
+player_one, player_two = get_players
+puts
+puts "Player one has the sign #{player_one}"
+puts "Player two has the sign #{player_two}"
+puts
+board = make_board
+player_one_turn = true
+
+def player_won(player_one_turn)
+  puts "Game ended!"
+  if player_one_turn
+    puts "Player one won!"
+  else
+    puts "Player two won!"
+  end
+end
+
+def draw
+  puts "Game ended!"
+  puts "It's a draw"
+end
+
+def invalid_input
+  puts "Invalid input, please try again...."
+end
+
+def numeric?(number)
+  Integer(number) != nil rescue false
+end
+
+game_on = true
+turns = 0
+while game_on
+  if player_one_turn
+    puts 'Player one, please make a move'
+  else
+    puts 'Player two, please make a move'
+  end
+  player_one_turn = !player_one_turn
+  board.each do |x|
+    puts "#{x[0]} | #{x[1]} | #{x[2]}"
+    puts '----------' if x != board[2]
+  end
+  print 'Enter move: '
+  movement = gets.chomp
+  if !numeric?(movement)
+    invalid_input
+    player_one_turn = !player_one_turn
+    next
+  end
+  if Integer(movement) > 9 or Integer(movement) < 1
+    invalid_input
+    player_one_turn = !player_one_turn
+    next
+  end
+  turns += 1
+  if turns == 10
+    player_won(player_one_turn)
+  elsif turns == 11
+    draw
+    game_on = false
+  end
+  puts
+end

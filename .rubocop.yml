@@ -41,3 +41,17 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+Style/InfiniteLoop:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+Lint/LiteralAsCondition:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/NonNilCheck:
+  Enabled: false
+Style/NegatedIf:
+  Enabled: false
