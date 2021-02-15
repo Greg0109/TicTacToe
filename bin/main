@@ -76,7 +76,7 @@ while game_on
   end
   print 'Enter move: '
   movement = gets.chomp
-  if not numeric?(movement)
+  if !numeric?(movement)
     invalid_input
     player_one_turn = !player_one_turn
     next
