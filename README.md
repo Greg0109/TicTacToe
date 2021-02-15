@@ -3,13 +3,16 @@
 # Week 2 TicTacToe
 
 In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row.
-Players will soon discover that the best play from both parties leads to a draw. Hence, tic-tac-toe is most often played by young children, who often have not yet discovered the optimal strategy. 
+Players will soon discover that the best play from both parties leads to a draw.
+Hence, tic-tac-toe is most often played by young children, who often have not yet discovered the optimal strategy. 
 
 ## How do we play Tic Tac Toe?
 
 Players take turns playing: 
-- 1st turn — Player 1: Player 1 places their token (X) in only 1 square of their choice
-- 2nd turn — Player 2: Player 2 places their token (O) in only 1 square of their choice, except they can’t touch the square that Player 1’s token already fills
+- 1st turn — Player 1: 
+Player 1 places their token (X) in only 1 square of their choice
+- 2nd turn — Player 2:
+ Player 2 places their token (O) in only 1 square of their choice, except they can’t touch the square that Player 1’s token already fills
 - 3rd turn- Player 1 …. and the cycle continues until a player wins or there’s a tie game
 
 There are 8 winning combinations: Top row, Middle row, Bottom row, Left column, Middle column, Right column, Left diagonal, and Right diagonal
