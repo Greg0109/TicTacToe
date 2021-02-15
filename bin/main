@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require './lib/logic.rb'
 
 def make_new_player
     puts "What symbol do you want to use?"
@@ -36,11 +37,26 @@ puts
 puts "Player one has the sign #{player_one}"
 puts "Player two has the sign #{player_two}"
 puts
+game = Logic.new(player_one, player_two)
 board = make_board
 player_one_turn = true
 player_move = nil
 
+def invalid_entry(board, movement, game)
+    if !game.numeric?(movement)
+        return true
+    else
+        movement = Integer(movement)
+        if (movement > 9 or movement < 1) || game.check_if_filled(board,movement)
+            return true
+        else
+            return false
+        end
+    end
+end
+
 while true
+    
     if player_one_turn
         puts "Player one, please make a move"
         player_one_turn = !player_one_turn
@@ -48,13 +64,44 @@ while true
         puts "Player two, please make a move"
         player_one_turn = !player_one_turn
     end
+
     for x in board
         puts "#{x[0]} | #{x[1]} | #{x[2]}"
         if x != board[2]
             puts "----------"
         end
     end
+
     print "Enter move: "
     movement = gets.chomp
     puts
+
+    if invalid_entry(board, movement, game)
+        puts "Invalid entry, please try again"
+        player_one_turn = !player_one_turn
+        puts
+        next
+    else
+        movement = Integer(movement)
+    end
+
+    if !game.player_won(board, movement, !player_one_turn)
+        puts "Game ended!"
+        unless game.check_win(board)
+            if game.check_draw(board)
+                puts "It's a draw"
+                break
+            end
+        else
+            if !player_one_turn
+                puts "Player one won!"
+                break
+            else
+                puts "Player two won!"
+                break
+            end
+        end
+    else
+        board = game.player_won(board, movement, !player_one_turn)
+    end
 end
