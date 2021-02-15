@@ -1,33 +1,33 @@
 #!/usr/bin/env ruby
 
 def make_new_player
-    puts "What symbol do you want to use?"
-    player_sign = gets.chomp
-    compatible_signs = ['X','O']
-    if not compatible_signs.include?(player_sign.upcase)
-        puts "Incompatible sign, please try again"
-        puts
-        make_new_player
-    else
-        player_sign.upcase
-    end
+  puts "What symbol do you want to use?"
+  player_sign = gets.chomp
+  compatible_signs = ['X', 'O']
+  if not compatible_signs.include?(player_sign.upcase)
+    puts "Incompatible sign, please try again"
+    puts
+    make_new_player
+  else
+    player_sign.upcase
+  end
 end
 
 def get_players
-    player_one = make_new_player
-    if player_one == 'X'
-        player_two = 'O'
-    else
-        player_two = 'X'
-    end
-    return player_one, player_two
+  player_one = make_new_player
+  if player_one == 'X'
+    player_two = 'O'
+  else
+    player_two = 'X'
+  end
+  return player_one, player_two
 end
 
 def make_board
-    first_line = [1, 2, 3]
-    second_line = [4, 5, 6]
-    third_line = [7, 8, 9]
-    board = [first_line, second_line, third_line]
+  first_line = [1, 2, 3]
+  second_line = [4, 5, 6]
+  third_line = [7, 8, 9]
+  board = [first_line, second_line, third_line]
 end
 
 puts "Ready player one"
@@ -41,20 +41,20 @@ player_one_turn = true
 player_move = nil
 
 while true
-    if player_one_turn
-        puts "Player one, please make a move"
-        player_one_turn = !player_one_turn
-    else
-        puts "Player two, please make a move"
-        player_one_turn = !player_one_turn
+  if player_one_turn
+    puts "Player one, please make a move"
+    player_one_turn = !player_one_turn
+  else
+    puts "Player two, please make a move"
+    player_one_turn = !player_one_turn
+  end
+  for x in board
+    puts "#{x[0]} | #{x[1]} | #{x[2]}"
+    if x != board[2]
+      puts "----------"
     end
-    for x in board
-        puts "#{x[0]} | #{x[1]} | #{x[2]}"
-        if x != board[2]
-            puts "----------"
-        end
-    end
-    print "Enter move: "
-    movement = gets.chomp
-    puts
+  end
+  print "Enter move: "
+  movement = gets.chomp
+  puts
 end
