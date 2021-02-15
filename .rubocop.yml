@@ -45,3 +45,5 @@ Style/InfiniteLoop:
   Enabled: false
 Naming/AccessorMethodName:
   Enabled: false
+Lint/LiteralAsCondition:
+  Enabled: false
