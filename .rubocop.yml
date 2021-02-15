@@ -47,11 +47,11 @@ Naming/AccessorMethodName:
   Enabled: false
 Lint/LiteralAsCondition:
   Enabled: false
-Style/StringLiterals:
+Metrics/CyclomaticComplexity:
   Enabled: false
-Style/RescueModifier:
+Metrics/PerceivedComplexity:
   Enabled: false
-Style/NonNilCheck:
+Lint/UselessAssignment:
   Enabled: false
-Style/NegatedIf:
+Metrics/BlockNesting:
   Enabled: false
