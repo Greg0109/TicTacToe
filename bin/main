@@ -30,6 +30,7 @@ game = Logic.new(player_one, player_two)
 board = settings.make_board
 player_one_turn = true
 player_move = nil
+game_status = false
 
 def invalid_entry(board, movement, game)
   if !game.numeric?(movement)
@@ -44,6 +45,13 @@ def invalid_entry(board, movement, game)
   end
 end
 
+def display_board(board)
+  board.each do |x|
+    puts "#{x[0]} | #{x[1]} | #{x[2]}"
+    puts '----------' if x != board[2]
+  end
+end
+
 while true
   if player_one_turn
     puts 'Player one, please make a move'
@@ -52,10 +60,7 @@ while true
   end
   player_one_turn = !player_one_turn
 
-  board.each do |x|
-    puts "#{x[0]} | #{x[1]} | #{x[2]}"
-    puts '----------' if x != board[2]
-  end
+  display_board(board)
 
   print 'Enter move: '
   movement = gets.chomp
@@ -69,20 +74,20 @@ while true
   else
     movement = Integer(movement)
   end
+  game_status, board = game.player_won(board, movement, !player_one_turn)
+  next unless game_status
 
-  if !game.player_won(board, movement, !player_one_turn)
-    puts 'Game ended!'
-    if game.check_win(board)
-      if !player_one_turn
-        puts 'Player one won!'
-      else
-        puts 'Player two won!'
-      end
-    elsif game.check_draw(board)
-      puts "It's a draw"
+  display_board(board)
+  puts
+  puts 'Game ended!'
+  if game.check_win(board)
+    if !player_one_turn
+      puts 'Player one won!'
+    else
+      puts 'Player two won!'
     end
-    break
-  else
-    board = game.player_won(board, movement, !player_one_turn)
+  elsif game.check_draw(board)
+    puts "It's a draw"
   end
+  break
 end

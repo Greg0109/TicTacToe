@@ -63,11 +63,7 @@ class Logic
         i += 1
       end
     end
-    if check_status(board)
-      false
-    else
-      board
-    end
+    [check_status(board), board]
   end
 
   def player_won(board, move, player_one_turn)
