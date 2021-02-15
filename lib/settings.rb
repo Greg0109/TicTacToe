@@ -1,11 +1,10 @@
 class Settings
   def get_players(player_one)
     if player_one == 'X'
-      player_two = 'O'
+      'O'
     else
-      player_two = 'X'
+      'X'
     end
-    return player_two
   end
 
   def make_board

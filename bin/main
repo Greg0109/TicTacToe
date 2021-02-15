@@ -1,13 +1,13 @@
 #!/usr/bin/env ruby
-require './lib/logic.rb'
-require './lib/settings.rb'
+require './lib/logic'
+require './lib/settings'
 
 def make_new_player
-  puts "What symbol do you want to use?"
+  puts 'What symbol do you want to use?'
   player_sign = gets.chomp
-  compatible_signs = ['X', 'O']
-  if not compatible_signs.include?(player_sign.upcase)
-    puts "Incompatible sign, please try again"
+  compatible_signs = %w[X O]
+  if !compatible_signs.include?(player_sign.upcase)
+    puts 'Incompatible sign, please try again'
     puts
     make_new_player
   else
@@ -15,7 +15,7 @@ def make_new_player
   end
 end
 
-puts "Ready player one"
+puts 'Ready player one'
 
 settings = Settings.new
 player_one = make_new_player
@@ -33,13 +33,13 @@ player_move = nil
 
 def invalid_entry(board, movement, game)
   if !game.numeric?(movement)
-    return true
+    true
   else
     movement = Integer(movement)
     if (movement > 9 or movement < 1) || game.check_if_filled(board, movement)
-      return true
+      true
     else
-      return false
+      false
     end
   end
 end
@@ -47,25 +47,23 @@ end
 while true
 
   if player_one_turn
-    puts "Player one, please make a move"
+    puts 'Player one, please make a move'
   else
-    puts "Player two, please make a move"
+    puts 'Player two, please make a move'
   end
   player_one_turn = !player_one_turn
 
-  for x in board
+  board.each do |x|
     puts "#{x[0]} | #{x[1]} | #{x[2]}"
-    if x != board[2]
-      puts "----------"
-    end
+    puts '----------' if x != board[2]
   end
 
-  print "Enter move: "
+  print 'Enter move: '
   movement = gets.chomp
   puts
 
   if invalid_entry(board, movement, game)
-    puts "Invalid entry, please try again"
+    puts 'Invalid entry, please try again'
     player_one_turn = !player_one_turn
     puts
     next
@@ -74,17 +72,15 @@ while true
   end
 
   if !game.player_won(board, movement, !player_one_turn)
-    puts "Game ended!"
-    unless game.check_win(board)
-      if game.check_draw(board)
-        puts "It's a draw"
-      end
-    else
+    puts 'Game ended!'
+    if game.check_win(board)
       if !player_one_turn
-        puts "Player one won!"
+        puts 'Player one won!'
       else
-        puts "Player two won!"
+        puts 'Player two won!'
       end
+    elsif game.check_draw(board)
+      puts "It's a draw"
     end
     break
   else
