@@ -13,22 +13,22 @@ def make_new_player
   end
 end
 
-def get_players
-  player_one = make_new_player
-  player_two = if player_one == 'X'
-                 'O'
-               else
-                 'X'
-               end
-  [player_one, player_two]
-end
+# def get_players
+#   player_one = make_new_player
+#   player_two = if player_one == 'X'
+#                  'O'
+#                else
+#                  'X'
+#                end
+#   [player_one, player_two]
+# end
 
-def make_board
-  first_line = [1, 2, 3]
-  second_line = [4, 5, 6]
-  third_line = [7, 8, 9]
-  [first_line, second_line, third_line]
-end
+# def make_board
+#   first_line = [1, 2, 3]
+#   second_line = [4, 5, 6]
+#   third_line = [7, 8, 9]
+#   [first_line, second_line, third_line]
+# end
 
 puts 'Ready player one'
 player_one, player_two = get_players
