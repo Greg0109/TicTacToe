@@ -66,11 +66,11 @@ class Logic
     [check_status(board), board]
   end
 
-  def player_won(board, move, player_one_turn)
-    if move.nil?
-      true
-    else
-      check_move(board, move, player_one_turn)
-    end
-  end
-end
+#   def player_won(board, move, player_one_turn)
+#     if move.nil?
+#       true
+#     else
+#       check_move(board, move, player_one_turn)
+#     end
+#   end
+# end
