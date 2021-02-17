@@ -1,4 +1,4 @@
-require '../lib/settings.rb'
+require_relative '../lib/settings.rb'
 
 settings = Settings.new
 
