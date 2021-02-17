@@ -41,6 +41,21 @@ This is an example of how you may give instructions on setting up your project l
 Ruby installed on your local machine.
 Terminal or similar to execute the program.
 
+## Testing
+In this project the testing was done using RSpec to test all game logic methods.
+
+## Install
+- In a terminal window type gem install rspec
+- Once rspec install has finished, type rspec --init
+- You will see a folder spec and a file .rspec
+- Inside spec folder you'll see a spec_helper.rb file.
+
+## Run
+We have already created rspec-testing files called logic.rb, and settings.rb.
+- go to the folder inside your terminal type rspec
+- If all test pass you will see:
+ `18 examples, 0 failures`
+
 ## Authors
 
 👤 Gregorio Rábago Sainz
@@ -53,6 +68,11 @@ Terminal or similar to execute the program.
 - GitHub: [@billodiallo](https://github.com/billodiallo)
 - Twitter: [@BilloDi83547008](https://twitter.com/BilloDi83547008)
 
+
+👤 Ayman Jabr (RSpec Testing part)
+
+- GitHub: [@AymanJabr](https://github.com/AymanJabr)
+- LinkedIn: [@Ayman Jabr](https://www.linkedin.com/in/ayman-jabr-3705a4100/)
 
 ## 🤝 Contributing
 
